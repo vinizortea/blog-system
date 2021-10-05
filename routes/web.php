@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,9 +19,18 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
+    $username = UserController::getUsername();
+    return view('dashboard',['username'=>$username]);
 })->name('dashboard');
 
+/*Route::middleware(['auth:sanctum', 'verified'])->get('/conta', function () {
+    $username = UserController::getUsername();
+    return view('conta',['username'=>$username]);
+})->name('conta');*/
+
 Route::get('/conta',function(){
-    return view('conta');
+    $username = UserController::getUsername();
+    $name = UserController::getName();
+    $email = UserController::getEmail();
+    return view('conta',['username'=>$username, 'name'=>$name, 'email'=>$email]);
 });

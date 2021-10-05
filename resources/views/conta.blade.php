@@ -10,18 +10,29 @@
 
     <div class="container">
         <div class="menu">
-            <button class="botao botao_dashboard" type="button">Dashboard</button>
-            <button class="botao botao_postagens" type="button">Postagens</button>
-            <button class="botao botao_conta" type="button" name="button_conta">Conta</button>
+            <button id="botao_dashboard" class="botao" type="button">Dashboard</button>
+            <button id="botao_postagens" class="botao" type="button">Postagens</button>
+            <button id="botao_conta" class="botao" type="button">Conta</button>
+            <script type="text/javascript">
+                document.getElementById("botao_dashboard").onclick = function () {
+                    location.href = "dashboard";
+                };
+                document.getElementById("botao_postagens").onclick = function () {
+                    location.href = "postagens";
+                };
+                document.getElementById("botao_conta").onclick = function () {
+                    location.href = "conta";
+                };
+            </script>
         </div>
         <div class="info_conta">
-            <h1>Olá Fulano</h1>
+            <h1>Olá {{$username}}</h1>
             <h2>Informações da conta</h2>
             <address>
                 <ul>
-                    <li>Nome completo: Fulano da Silva</li>
-                    <li>Nome de usuário: fulano</li>
-                    <li>Email: fulano@e-mail.com</li>
+                    <li>Nome completo: {{$name}}</li>
+                    <li>Nome de usuário: {{$username}}</li>
+                    <li>Email: {{$email}}</li>
                 </ul>
             </address>
         </div>
