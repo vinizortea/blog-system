@@ -27,7 +27,12 @@
         </div>
         <div class="postagens">
             <h2>Lista de postagens</h2>
-            <button class="botao_nova_postagem">Adicionar nova postagem</button>
+            <button id="botao_nova_postagem" class="botao">Adicionar nova postagem</button>
+            <script type="text/javascript">
+                document.getElementById("botao_nova_postagem").onclick = function () {
+                    location.href = "novaPostagem";
+                };
+            </script>
             <div class="dados_postagens">
                 <table>
                     <tr>

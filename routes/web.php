@@ -30,6 +30,10 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/conta', function () {
      return view('conta',['username'=>$username, 'name'=>$name, 'email'=>$email]);
 })->name('conta');
 
-Route::get('/postagens', function () {
+Route::middleware(['auth:sanctum', 'verified'])->get('/postagens', function () {
     return view('postagens');
-});
+})->name('postagens');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/novaPostagem', function () {
+    return view('novaPostagem');
+})->name('novaPostagem');
