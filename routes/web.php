@@ -18,22 +18,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    $username = UserController::getUsername();
-    return view('dashboard',['username'=>$username]);
-})->name('dashboard');
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard',[UserController::class,'dadosDashboard'])->name('dashboard');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/conta', function () {
-    $username = UserController::getUsername();
-    $name = UserController::getName();
-    $email = UserController::getEmail();
-     return view('conta',['username'=>$username, 'name'=>$name, 'email'=>$email]);
-})->name('conta');
+Route::middleware(['auth:sanctum', 'verified'])->get('/conta',[UserController::class,'dadosConta'])->name('conta');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/postagens', function () {
-    return view('postagens');
-})->name('postagens');
+Route::middleware(['auth:sanctum', 'verified'])->get('/postagens',[UserController::class,'dadosPostagens'])
+->name('postagens');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/novaPostagem', function () {
-    return view('novaPostagem');
-})->name('novaPostagem');
+Route::middleware(['auth:sanctum', 'verified'])->get('/novaPostagem',[UserController::class,'dadosNovaPostagem'])
+->name('novaPostagem');

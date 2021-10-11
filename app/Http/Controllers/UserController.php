@@ -7,24 +7,35 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    public static function getUsername(){
-        if(Auth::check()){
-            $username = Auth::user()->username;
-        }
-        return $username;
+    public function dadosDashboard(){
+        $username = Auth::user()->username;
+        $name = Auth::user()->name;
+        $email = Auth::user()->email;
+
+        return view('dashboard',compact('username','name','email'));
     }
 
-    public static function getName(){
-        if(Auth::check()){
-            $name = Auth::user()->name;
-        }
-        return $name;
+    public function dadosConta(){
+        $username = Auth::user()->username;
+        $name = Auth::user()->name;
+        $email = Auth::user()->email;
+
+        return view('conta',compact('username','name','email'));
+    }
+    
+    public function dadosPostagens(){
+        $username = Auth::user()->username;
+        $name = Auth::user()->name;
+        $email = Auth::user()->email;
+
+        return view('postagens',compact('username','name','email'));
     }
 
-    public static function getEmail(){
-        if(Auth::check()){
-            $email = Auth::user()->email;
-        }
-        return $email;
+    public function dadosNovaPostagem(){
+        $username = Auth::user()->username;
+        $name = Auth::user()->name;
+        $email = Auth::user()->email;
+
+        return view('novaPostagem',compact('username','name','email'));
     }
 }
